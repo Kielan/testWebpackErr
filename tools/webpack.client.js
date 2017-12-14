@@ -5,7 +5,7 @@ var webpackCommonConfig = require('./webpack.common');
 var entry = {
   'app': ['./src/main.js'],
 }
-var loaders = webpackCommonConfig.module.loaders.concat();
+var loaders = webpackCommonConfig.module.rules.concat();
 const WebpackRecipe = deepmerge({
   cache: false,
   devtool: '',
