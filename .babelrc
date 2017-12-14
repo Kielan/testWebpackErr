@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "@babel/react",
+    "@babel/preset-env",
+    "@babel/preset-stage-2",
+  ],
+  "ignore": [
+    "data/*.js",
+    "node_modules/*"
+  ],
+  "compact": true
+}

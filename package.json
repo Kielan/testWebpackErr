@@ -1,0 +1,47 @@
+{
+  "name": "testWebpackErr",
+  "version": "1.0.0",
+  "description": "a webpack error regarding the latest config",
+  "main": "index.js",
+  "repository": "na",
+  "author": "kielan",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "clean:js": "rimraf public/js/main*.js && rimraf public/js/app.js && rimraf public/js/plugins.js && rimraf public/js/*.map",
+    "clean:css": "rimraf public/css/main*.css && rimraf public/css/app*.css && rimraf public/css/*.map",
+    "clean:fonts": "rimraf public/fonts/*",
+    "dev": "npm run clean:js && npm run clean:fonts && npm run build:client",
+    "build:client": "EXTRACT_TEXT_PLUGIN=true webpack --color --display-error-details --config tools/webpack.client.js --bail"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.34",
+    "@babel/core": "7.0.0-beta.34",
+    "@babel/helper-bindify-decorators": "7.0.0-beta.34",
+    "@babel/plugin-proposal-decorators": "7.0.0-beta.34",
+    "@babel/plugin-proposal-function-bind": "7.0.0-beta.34",
+    "@babel/plugin-syntax-class-properties": "7.0.0-beta.34",
+    "@babel/plugin-syntax-decorators": "7.0.0-beta.34",
+    "@babel/plugin-syntax-dynamic-import": "7.0.0-beta.34",
+    "@babel/plugin-syntax-export-default-from": "7.0.0-beta.34",
+    "@babel/plugin-syntax-export-namespace-from": "7.0.0-beta.34",
+    "@babel/plugin-transform-block-scoping": "7.0.0-beta.34",
+    "@babel/plugin-transform-classes": "7.0.0-beta.34",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.34",
+    "@babel/plugin-transform-strict-mode": "7.0.0-beta.34",
+    "@babel/preset-env": "7.0.0-beta.34",
+    "@babel/preset-es2017": "7.0.0-beta.34",
+    "@babel/preset-react": "^7.0.0-beta.34",
+    "@babel/preset-stage-0": "7.0.0-beta.34",
+    "@babel/preset-stage-3": "7.0.0-beta.34",
+    "@babel/register": "7.0.0-beta.34",
+    "@babel/runtime": "7.0.0-beta.34",
+    "@sketchpixy/just-wait": "^1.0.5",
+    "run-s": "^0.0.0"
+  },
+  "dependencies": {
+    "babel-loader": "8.0.0-beta.0",
+    "deepmerge": "2.0.1",
+    "webpack": "3.10.0"
+  }
+}
