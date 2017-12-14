@@ -33,6 +33,7 @@
   "dependencies": {
     "babel-loader": "8.0.0-beta.0",
     "deepmerge": "2.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "react": "16.2.0",
     "react-router-dom": "4.2.2",
     "style-loader": "^0.19.1",

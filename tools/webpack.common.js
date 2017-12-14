@@ -1,3 +1,5 @@
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {
   module: {
     rules: [
@@ -9,7 +11,10 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: ['style-loader','css-loader', 'sass-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       },
       {
         test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/,
@@ -38,6 +43,9 @@ module.exports = {
       },
     ]
   },
+  plugins: [
+    new ExtractTextPlugin("styles.css"),
+  ],
   resolve: {
     modules: [
       "src",
