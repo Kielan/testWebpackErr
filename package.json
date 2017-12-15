@@ -10,9 +10,12 @@
   "scripts": {
     "clean:js": "rimraf public/js/main*.js && rimraf public/js/app.js && rimraf public/js/plugins.js && rimraf public/js/*.map",
     "clean:css": "rimraf public/css/main*.css && rimraf public/css/app*.css && rimraf public/css/*.map",
+    "clean:server": "rimraf server.js && rimraf server.js.map",
     "clean:fonts": "rimraf public/fonts/*",
-    "dev": "npm run clean:js && npm run clean:fonts && npm run build:client",
-    "build:client": "EXTRACT_TEXT_PLUGIN=true webpack --color --display-error-details --config tools/webpack.client.js --bail"
+    "dev": "npm run clean:js && npm run clean:fonts && npm run dev:build:client && npm run clean:server && npm run dev:build:server && npm run dev:run:server",
+    "dev:build:client": "webpack --color --display-error-details --config tools/webpack.client.js --bail",
+    "dev:build:server": "webpack --color --display-error-details --config tools/webpack.server.js --bail",
+    "dev:run:server": "NODE_ENV=development node server.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.34",
@@ -33,7 +36,10 @@
   "dependencies": {
     "babel-loader": "8.0.0-beta.0",
     "deepmerge": "2.0.1",
+    "expose-loader": "^0.7.4",
     "extract-text-webpack-plugin": "^3.0.2",
+    "jquery": "^3.2.1",
+    "pug": "2.0.0-beta3",
     "react": "16.2.0",
     "react-router-dom": "4.2.2",
     "style-loader": "^0.19.1",

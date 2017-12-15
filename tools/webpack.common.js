@@ -1,5 +1,5 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+//const ExtractTextPlugin = require("extract-text-webpack-plugin");
+//console.log('lordBEEZExtractTextPluginordBEEZE', ExtractTextPlugin)
 module.exports = {
   module: {
     rules: [
@@ -8,13 +8,17 @@ module.exports = {
         use: ['babel-loader'],
         exclude: /node_modules/,
       },
-      {
+/*      {
+      test: require.resolve('jquery'),
+        use: [{
+            loader: '?$!expose-loader?jQuery',
+            options: '$'
+        }],
+      },
+      */{
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+        use: "css-loader"
       },
       {
         test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/,
@@ -43,9 +47,6 @@ module.exports = {
       },
     ]
   },
-  plugins: [
-    new ExtractTextPlugin("styles.css"),
-  ],
   resolve: {
     modules: [
       "src",

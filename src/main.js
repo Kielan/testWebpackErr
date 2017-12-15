@@ -1,10 +1,11 @@
 import React, { createElement, cloneElement } from 'react';
 import { Router, BrowserRouter, Switch, Route, browserHistory } from 'react-router-dom';
+import { A, B } from './components/multipleExports';
 
 class Page1 extends React.Component {
   render() {
     return (
-      <div></div>
+      <div><A></A></div>
     )
   }
 }
