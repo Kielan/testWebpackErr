@@ -1,12 +1,13 @@
 import React, { createElement, cloneElement } from 'react';
+import ReactDOM from 'react-dom';
 import { Router, BrowserRouter, Switch, Route, browserHistory } from 'react-router-dom';
 import { A, B } from './components/multipleExports';
 
 class Page1 extends React.Component {
   render() {
-    console.log('check jquery $', $);
+    console.log('check jquery jQuery', jQuery);
     return (
-      <div><A></A></div>
+      <div>HMMMM<A></A></div>
     )
   }
 }
@@ -47,4 +48,7 @@ var listReasource = {}
         </BrowserRouter>
     )
   }
+}
+if(typeof window !== 'undefined') {
+  ReactDOM.render(<Routes />, document.getElementById('app-container'))
 }
