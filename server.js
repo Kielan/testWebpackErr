@@ -72,9 +72,60 @@ module.exports = __webpack_require__(1);
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _react=_interopRequireDefault(__webpack_require__(2));function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var path=__webpack_require__(3);var express=__webpack_require__(4);var cookieParser=__webpack_require__(5);var fs=__webpack_require__(6);var https=__webpack_require__(7);var bodyParser=__webpack_require__(8);var cors=__webpack_require__(9);var appConfig={"httpSecure":process.env.HTTP_SECURE||3442,"wdsPort":process.env.WDS_PORT||8079,"httpsPort":process.env.HTTPS_PORT||3443,"apiUrl":'https://'+(process.env.API_MODE||'api.lemod-helper.com')//'https://api.lemod-helper.com',//'https://dev.lemod-helper.com',
+};var isProduction=process.env.NODE_ENV==='production';var static_path='https://'+appConfig.host+':'+appConfig.httpsPort;var credentials={key:fs.readFileSync('./key.pem','utf8'),cert:fs.readFileSync('./cert.pem','utf8')};var app=express();var jsonParser=bodyParser.json();app.use(bodyParser.urlencoded({extended:true}));app.use(bodyParser.json());app.use(cookieParser());app.use('/',express.static(path.join(process.cwd(),'public')));app.set('views',path.join(process.cwd(),'views'));app.set('view engine','pug');app.get('*',function(req,res){//  res.locals.app_stylesheets = '<script src="/js/main.js"></script>';
+res.locals.app_scripts='\n <script src="/js/app.js"></script>\n';console.log('url hit');res.render('index',{title:'Hey',message:'Hello there!'});});var secureApp=https.createServer(credentials,app).listen(appConfig.httpsPort,function(){console.log("Node.js app is running at https://localhost:".concat(appConfig.httpsPort,"/"));});
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: .inputSourceMap must be a boolean, object, or undefined\n    at assertInputSourceMap (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/@babel/core/lib/config/option-assertions.js:41:11)\n    at /Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/@babel/core/lib/config/options.js:71:20\n    at Array.forEach (native)\n    at validate (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/@babel/core/lib/config/options.js:57:21)\n    at OptionManager.init (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/@babel/core/lib/config/option-manager.js:102:38)\n    at manageOptions (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/@babel/core/lib/config/option-manager.js:33:30)\n    at loadConfig (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/@babel/core/lib/config/index.js:15:37)\n    at transformSync (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/@babel/core/lib/transform-sync.js:13:36)\n    at Object.transform (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/@babel/core/lib/transform.js:20:65)\n    at transpile (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/babel-loader/lib/index.js:55:20)\n    at Object.module.exports (/Users/kielan/Documents/Github/lemod/prod/noway/testWebpackErr/node_modules/babel-loader/lib/index.js:179:20)");
+module.exports = require("react");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("cookie-parser");
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("https");
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("body-parser");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("cors");
 
 /***/ })
 /******/ ]);

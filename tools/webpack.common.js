@@ -18,7 +18,7 @@ module.exports = {
       */{
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: "css-loader"
+        use: ['style-loader','css-loader', 'sass-loader']
       },
       {
         test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/,

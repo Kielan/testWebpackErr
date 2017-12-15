@@ -6,7 +6,12 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 import React from 'react';
-import { appConfig } from './config';
+var appConfig = {
+  "httpSecure": process.env.HTTP_SECURE || 3442,
+  "wdsPort": process.env.WDS_PORT || 8079,
+  "httpsPort": process.env.HTTPS_PORT || 3443,
+  "apiUrl": 'https://' + (process.env.API_MODE || 'api.lemod-helper.com'),//'https://api.lemod-helper.com',//'https://dev.lemod-helper.com',
+}
 
 var isProduction = process.env.NODE_ENV === 'production';
 var static_path = 'https://' + appConfig.host + ':' + appConfig.httpsPort;

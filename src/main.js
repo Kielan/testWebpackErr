@@ -4,6 +4,7 @@ import { A, B } from './components/multipleExports';
 
 class Page1 extends React.Component {
   render() {
+    console.log('check jquery $', $);
     return (
       <div><A></A></div>
     )

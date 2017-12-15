@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var webpack = require('webpack');
 var deepmerge = require('deepmerge');
 var webpackCommonConfig = require('./webpack.common');
@@ -11,25 +12,39 @@ fs.readdirSync('node_modules')
   .forEach(function(mod) {
     nodeModules[mod] = 'commonjs ' + mod;
   });
-var rules = webpackCommonConfig.module.rules.concat();
+
+//var sourceMapSupportModule = "require('source-map-support').install({environment: 'node'});\n\n";
+
+//var output = { path: path.join(process.cwd(), 'tmp'), filename: 'bundle.js' };
+
+//if (process.env.NO_OUTPUT_PATH) {
+  var output = { filename: 'server.js' };
+//}
+
+var loaders = webpackCommonConfig.module.rules.concat();
+//loaders.push({ test: /\.scss$/, loader: 'null' });
+
+//why?
+//delete webpackCommonConfig.module;
+
 module.exports = deepmerge({
   devtool: '',
   entry: [
     './server.babel.js'
   ],
-  output: { filename: 'server.js' },
+  output: output,
   target: 'node',
   module: {
-    rules: rules
+    loaders: loaders
   },
-  plugins: [
-/*    new webpack.BannerPlugin(sourceMapSupportModule, {
+  plugins: [/*
+    new webpack.BannerPlugin({
       raw: true,
       entryOnly: true
-    }), */
-//    new webpack.NoErrorsPlugin(),
-//    new webpack.DefinePlugin({__CLIENT__: false, __SERVER__: true, __PRODUCTION__: false, __DEV__: true, "process.env.NODE_ENV": '"'+process.env.NODE_ENV+'"', "process.env.API_MODE": '"'+process.env.API_MODE+'"'}),
-//    new webpack.IgnorePlugin(/vertx/)
-  ],
+    }),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({__CLIENT__: false, __SERVER__: true, __PRODUCTION__: false, __DEV__: true, "process.env.NODE_ENV": '"'+process.env.NODE_ENV+'"', "process.env.API_MODE": '"'+process.env.API_MODE+'"'}),
+    new webpack.IgnorePlugin(/vertx/)
+  */],
   externals: nodeModules
 }, webpackCommonConfig);
