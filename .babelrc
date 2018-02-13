@@ -8,6 +8,8 @@
   ],
   "plugins": [
     ["transform-decorators-legacy"],
+    ["module:@babel/helper-module-imports"],
+    ["transform-promise-to-bluebird"],
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
   ],
   "ignore": [

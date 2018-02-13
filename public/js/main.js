@@ -60,26 +60,26 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 403);
+/******/ 	return __webpack_require__(__webpack_require__.s = 326);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 403:
+/***/ 326:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(404);
+module.exports = __webpack_require__(327);
 
 
 /***/ }),
 
-/***/ 404:
+/***/ 327:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(405);
+var content = __webpack_require__(328);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -87,7 +87,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(407)(content, options);
+var update = __webpack_require__(330)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -105,10 +105,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 405:
+/***/ 328:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(406)(undefined);
+exports = module.exports = __webpack_require__(329)(undefined);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Bad+Script&subset=cyrillic);", ""]);
 
@@ -120,7 +120,7 @@ exports.push([module.i, "button::-moz-focus-inner,\ninput[type=\"reset\"]::-moz-
 
 /***/ }),
 
-/***/ 406:
+/***/ 329:
 /***/ (function(module, exports) {
 
 /*
@@ -203,7 +203,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 407:
+/***/ 330:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -259,7 +259,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(408);
+var	fixUrls = __webpack_require__(331);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -576,7 +576,7 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 
-/***/ 408:
+/***/ 331:
 /***/ (function(module, exports) {
 
 

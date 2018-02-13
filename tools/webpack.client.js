@@ -7,14 +7,16 @@ Promise.config({
     warnings: true // note, run node with --trace-warnings to see full stack traces for warnings
 }) = require('@babel/runtime/core-js/promise').default;
 */
+/*
 Promise.config = {
     longStackTraces: true,
     warnings: true // note, run node with --trace-warnings to see full stack traces for warnings
 }
+*/
 //where do I put this var in the bootstrap step of entry, it's very vauge. Must I create a new file?
 //var babelPromiseOverride = require('@babel/runtime/core-js/promise')
 //also try
-require('@babel/runtime/core-js/promise').default = Promise;//require('bluebird');
+//var readableObj = require('@babel/runtime/core-js/promise').default = Promise;//require('bluebird');
 
 var path = require('path');
 var webpackMerge = require('webpack-merge');
@@ -25,6 +27,7 @@ var entry = {
   'app': ['@babel/polyfill', './src/main.js'],
   'main': ['./sass/main.scss'],
 }
+//    ["module:@babel/helper-module-imports"],
 
 //do I create a plugins arr and use this package? It doesn't work either
 /*

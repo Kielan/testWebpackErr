@@ -1,5 +1,5 @@
 //const ExtractTextPlugin = require("extract-text-webpack-plugin");
-//console.log('lordBEEZExtractTextPluginordBEEZE', ExtractTextPlugin)
+//console.log('lordBEEZExtractTextPluginordBEEZE', ExtractTextPlugin)//, 'module:@babel/helper-module-imports'
 module.exports = {
   module: {
     rules: [
@@ -7,8 +7,7 @@ module.exports = {
         test: /\.js$/,
         use: ['babel-loader'],
         exclude: /node_modules/,
-      },
-/*      {
+      },/*      {
       test: require.resolve('jquery'),
         use: [{
             loader: '?$!expose-loader?jQuery',
