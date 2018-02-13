@@ -1,11 +1,14 @@
 {
   "presets": [
     "@babel/react",
-    "@babel/preset-env",
-    "@babel/preset-stage-2",
+    ["@babel/preset-env", {
+      "useBuiltIns": "entry",
+    }],
+    "@babel/preset-stage-0",
   ],
   "plugins": [
-    ["@babel/plugin-transform-modules-commonjs"]
+    ["transform-decorators-legacy"],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
   ],
   "ignore": [
     "data/*.js",

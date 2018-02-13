@@ -1,11 +1,27 @@
+//require('@babel/runtime/core-js/promise').default = require('bluebird');
+
 import React, { createElement, cloneElement } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, BrowserRouter, Switch, Route, browserHistory } from 'react-router-dom';
 import { A, B } from './components/multipleExports';
+const delay = ms => new Promise(r => setTimeout(r, ms));
+
+let asyncPromisesArr = [
+  {
+    firstName: '',
+    lastName: ''
+
+  },
+  {
+    firstName: '',
+    lastName: ''
+  }
+]
+
 
 class Page1 extends React.Component {
   render() {
-    console.log('check jquery jQuery', jQuery);
+//    console.log('check jquery jQuery', jQuery);
     return (
       <div>HMMMM<A></A></div>
     )
@@ -20,9 +36,23 @@ class Page3 extends React.Component {
   }
 }
 class Page2 extends React.Component {
+  async submit(e) {
+    e.preventDefault();
+
+    let arrItemsPromised = asyncPromisesArr.map(this.itemCreate);
+    return Promise.each(asyncPromisesArr, this.itemCreate)//[...asyncPromisesArr]);
+  }
+  async itemCreate(data) {
+    return delay(5000).then(() => {
+      console.log('data + porcupine'. data)
+      return data;
+    })
+  }
   render() {
     return (
-      <div></div>
+      <div>
+        <button type='submit' onClick={::this.submit}>Submit</button>
+      </div>
     )
   }
 }

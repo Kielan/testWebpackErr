@@ -1,13 +1,41 @@
+var Promise = require("bluebird");
+// Configure
+/*
+this is how it is said to do in docs but gets invalid left hand assignment
+Promise.config({
+    longStackTraces: true,
+    warnings: true // note, run node with --trace-warnings to see full stack traces for warnings
+}) = require('@babel/runtime/core-js/promise').default;
+*/
+Promise.config = {
+    longStackTraces: true,
+    warnings: true // note, run node with --trace-warnings to see full stack traces for warnings
+}
+//where do I put this var in the bootstrap step of entry, it's very vauge. Must I create a new file?
+//var babelPromiseOverride = require('@babel/runtime/core-js/promise')
+//also try
+require('@babel/runtime/core-js/promise').default = Promise;//require('bluebird');
+
 var path = require('path');
-var deepmerge = require('deepmerge');
+var webpackMerge = require('webpack-merge');
 var webpackCommonConfig = require('./webpack.common');
 
+//here polygill is set, but needs to be overridden
 var entry = {
-  'app': ['./src/main.js'],
+  'app': ['@babel/polyfill', './src/main.js'],
   'main': ['./sass/main.scss'],
 }
+
+//do I create a plugins arr and use this package? It doesn't work either
+/*
+var pluginArr = [
+  new webpack.ProvidePlugin({
+    Promise: "imports-loader?this=>global!exports-loader?global.Promise!bluebird",
+  })
+]
+*/
 var loaders = webpackCommonConfig.module.rules.concat();
-const WebpackRecipe = deepmerge({
+const WebpackRecipe = webpackMerge({
   cache: false,
   devtool: '',
   entry: entry,
@@ -16,7 +44,7 @@ const WebpackRecipe = deepmerge({
   },
   output: {
     path: path.join(process.cwd(), 'public'),
-    publicPath: '/',//publicPath, //isProduction was just /
+    publicPath: '/',
     chunkFilename: 'js/[name].js',
     filename: 'js/[name].js',
   },
