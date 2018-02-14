@@ -21,10 +21,12 @@ Promise.config = {
 var path = require('path');
 var webpackMerge = require('webpack-merge');
 var webpackCommonConfig = require('./webpack.common');
-
+//'@babel/polyfill', './src/main.js'
 //here polygill is set, but needs to be overridden
+var envEntry = require('./entry');
+
 var entry = {
-  'app': ['@babel/polyfill', './src/main.js'],
+  'app': envEntry,
   'main': ['./sass/main.scss'],
 }
 //    ["module:@babel/helper-module-imports"],
